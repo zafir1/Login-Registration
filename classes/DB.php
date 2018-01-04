@@ -91,6 +91,40 @@ class DB{
 		return $this->action("DELETE ",$table, $where);
 	}
 
+	public function update($table,$id,$fields)
+	{
+		$set = "";
+	}
+
+	public function insert($table,$fields = array())
+	{
+		if(count($fields))
+		{
+			$keys = array_keys($fields);
+			$values = NULL;
+			$x =1;
+
+			foreach($fields as $field)
+			{
+				$values .= '?';
+				if($x < count($fields))
+				{
+					$values .= ',';
+				}
+				$x++;
+			}
+
+			$sql = "INSERT INTO `{$table}` (`" . implode('`, `', $keys) . "`) VALUES ({$values})";
+			
+			if(!$this->query($sql,$fields)->error())
+			{
+				return true;
+			}
+
+		}
+		return false;
+	}
+
 	public function results()
 	{
 		return $this->_results;
