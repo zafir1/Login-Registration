@@ -1,10 +1,10 @@
 <?php 
 	require_once('core/init.php');
 
-	$userUpdate = DB::getInstance()->insert('users',array(
-			'username' => "NazirAhmad",
-			'password' => "password",
-			'salt' => "salt" 
+	$userUpdate = DB::getInstance()->update('users',3,array(
+			'username' => "Nazir",
+			'password' => "newpassword",
+			'salt' => "newsalt" 
 		));
 
 	//$user = DB::getInstance()->query("SELECT username FROM usersz WHERE username = ?",array("zafir"));
